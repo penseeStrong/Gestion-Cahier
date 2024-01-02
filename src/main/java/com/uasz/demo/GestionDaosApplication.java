@@ -22,25 +22,13 @@ public class GestionDaosApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception{
-		ueRepository.save(new Cahier(null, "info", "INF351", 8, 4,"Bonne",new Date()));
-		ueRepository.save(new Cahier(null, "maths", "INF3", 2, 1,"Moyenne",new Date()));
-		ueRepository.save(new Cahier(null, "pc", "INF3", 1, 3,"Faible",new Date()));
-		ueRepository.save(new Cahier(null, "info", "INF351", 8, 4,"Bonne",new Date()));
-		ueRepository.save(new Cahier(null, "maths", "INF3", 2, 1,"Moyenne",new Date()));
-		ueRepository.save(new Cahier(null, "pc", "INF3", 1, 3,"Faible",new Date()));
-		ueRepository.save(new Cahier(null, "info", "INF351", 8, 4,"Bonne",new Date()));
-		ueRepository.save(new Cahier(null, "maths", "INF3", 2, 1,"Moyenne",new Date()));
-		ueRepository.save(new Cahier(null, "pc", "INF3", 1, 3,"Faible",new Date()));
-		ueRepository.save(new Cahier(null, "info", "INF351", 8, 4,"Bonne",new Date()));
-		ueRepository.save(new Cahier(null, "maths", "INF3", 2, 1,"Moyenne",new Date()));
-		ueRepository.save(new Cahier(null, "pc", "INF3", 1, 3,"Faible",new Date()));
-		ueRepository.save(new Cahier(null, "info", "INF351", 8, 4,"Bonne",new Date()));
-		ueRepository.save(new Cahier(null, "maths", "INF3", 2, 1,"Moyenne",new Date()));
-		ueRepository.save(new Cahier(null, "pc", "INF3", 1, 3,"Faible",new Date()));
-		ueRepository.save(new Cahier(null, "info", "INF351", 8, 4,"Bonne",new Date()));
-		ueRepository.save(new Cahier(null, "maths", "INF3", 2, 1,"Moyenne",new Date()));
-		ueRepository.save(new Cahier(null, "pc", "INF3", 1, 3,"Faible",new Date()));
-
+		ueRepository.save(new Cahier(null, "Pm Luxe",200,"superieur","disponible", new Date()));
+		ueRepository.save(new Cahier(null, "new cahier",100,"bonne","disponible" , new Date()));
+		ueRepository.save(new Cahier(null, "Pp Oriz",32,"moyenne","vide", new Date()));
+		ueRepository.save(new Cahier(null, "Pa New",200,"superieure","vide", new Date()));
+		ueRepository.save(new Cahier(null, "best",100,"bonne","disponible", new Date()));
+		ueRepository.save(new Cahier(null, "solide",48,"moyenne","vide", new Date()));
+		ueRepository.save(new Cahier(null, "power",200,"mauvaise","disponible", new Date()));
 
 	}
 

@@ -10,13 +10,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.data.domain.Pageable;
-import java.util.List;
 
 @Controller @AllArgsConstructor
 public class CahierController {
-    private CahierRepository ueRepository;
+    private CahierRepository cahierRepository;
 
     @GetMapping("/uasz")
     public String index(@NotNull Model model,
@@ -25,17 +24,23 @@ public class CahierController {
                         @RequestParam(name = "keyword", defaultValue = "") String kw
 
     ){
-        Page<Cahier> pageListUE = ueRepository.findBylibelleContains(kw,PageRequest.of(p,s));
+        Page<Cahier> pageListUE = cahierRepository.findBynomContains(kw,PageRequest.of(p,s));
         model.addAttribute("list", pageListUE.getContent());
         model.addAttribute("pages", new int[pageListUE.getTotalPages()]);
         model.addAttribute("currentPage",p);
         model.addAttribute("keyword",kw);
-        return "ue";
+        return "cahier";
     }
 
     @GetMapping("/delete")
     public String delete(Long id, String keyword, int page){
-        ueRepository.deleteById(id);
+        cahierRepository.deleteById(id);
         return  "redirect:/uasz?page="+page+"&keyword="+keyword;
+    }
+
+    @PostMapping("/add")
+    public String create(Cahier cahier){
+        cahierRepository.save(cahier);
+        return "redirect:/uasz";
     }
 }
