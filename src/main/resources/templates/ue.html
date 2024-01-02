@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Uasz-application</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.11.2/font/bootstrap-icons.css">
+</head>
+
+<body>
+<div class="p-3">
+    <div class="card">
+        <div class="card-header">Listes des UE</div>
+        <div class="card-body">
+            <form method="get" th:action="@{uasz}">
+                <label>Keyword</label>
+                <input type="text" name="keyword" th:value="${keyword}">
+                <button type="submit" class="btn btn-info">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th> <th>Libelle</th> <th>Code</th> <th>Credits</th> <th>Coefficient</th> <th>Description</th> <th>dateCreation</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p:${list}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.libelle}"></td>
+                    <td th:text="${p.code}"></td>
+                    <td th:text="${p.credit}"></td>
+                    <td th:text="${p.coefficiant}"></td>
+                    <td th:text="${p.description}"></td>
+                    <td th:text="${p.dateCreation}"></td>
+                    <td>
+                        <a onclick="javascript:return confirm('etes-vous sur ?')"
+                           th:href="@{delete(id=${p.id}, keyword=${keyword}, page=${currentPage})}" class="btn btn-danger">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <ul class="nav nav-pills">
+                <li th:each="page,status:${pages}">
+                    <a th:href="@{/uasz(page=${status.index}, keyword=${keyword})}"
+                      th:class="${(currentPage==status.index)?'btn btn-info ms-1' : 'btn btn-outline-info ms-1'}"
+                       th:text="${1+status.index}"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
